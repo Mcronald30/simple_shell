@@ -95,14 +95,14 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* Builtins */
-int (*get_builtin(char *command))(char **args, char **front);
-int exit_shell(char **args, char **front);
-int env_shell(char **args, char **front);
-int set_env(char **args, char **front);
-int unset_env(char **args, char  **front);
-int shell_cd(char **args, char **front);
-int shell_alias(char **args, char **front);
-int shell_help(char **args, char **front);
+int my_builtin(char **args, char **prow);
+int exit_shell(char **args, char **prow);
+int env_shell(char **args, char **prow);
+int set_env(char **args, char **prow);
+int unset_env(char **args, char  **prow);
+int shell_cd(char **args, char **prow);
+int shell_alias(char **args, char **prow);
+int shell_help(char **args, char **prow);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 
