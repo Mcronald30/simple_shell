@@ -12,9 +12,9 @@ char *err_env(char **args)
 	char *err, *his_str;
 	int len, temp_his, his_digits = 0;
 
-/*Determine number of digits in hist and store in hist_digits*/
+/*Determine number of digits in hist and store in his_digits*/
 
-	temp_hist = his;
+	temp_his = his;
 	while (temp_his != 0)
 	{
 		his_digits++;
@@ -41,7 +41,7 @@ char *err_env(char **args)
 	_strcat(err, args[0]);
 	_strcat(err, ": Unable to add/remove from environment\n");
 
-	free(hist_str);
+	free(his_str);
 	return (err);
 }
 
@@ -67,7 +67,7 @@ char *err_1(char **args)
 	_strcpy(err, "alias: ");
 	_strcpy(err + 7, args[0]);
 	_strcpy(err + 7 + arg_len, " not found\n");
-	error[len] = '\0';
+	err[len] = '\0';
 
 	return (err);
 }
@@ -88,7 +88,7 @@ char *err2_exit(char **args)
 	{
 		return (NULL);
 	}
-	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 27;
+	len = _strlen(name) + _strlen(his_str) + _strlen(args[0]) + 27;
 	err = malloc(sizeof(char) * (len + 1));
 	if (!err)
 	{
@@ -144,7 +144,7 @@ char *err2_cd(char **args)
 	_strcat(err, args[0]);
 	_strcat(err, "\n");
 
-	free(hist_str);
+	free(his_str);
 	return (err);
 }
 

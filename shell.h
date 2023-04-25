@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -56,11 +57,11 @@ typedef struct alias_s
 {
 	char *name;
 	char *value;
-	struct Alias *next;
-} Alias;
+	struct alias *next;
+} alias_t;
 
 /* Global aliases linked list */
-Alias *aliases;
+alias_t *aliases;
 
 /* Main Helpers */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
