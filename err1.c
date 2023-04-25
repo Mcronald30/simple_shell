@@ -9,34 +9,34 @@ char *err_env(char **args);
  */
 char *err_env(char **args)
 {
-	char *err, *hist_str;
-	int len, temp_hist, hist_digits = 0;
+	char *err, *his_str;
+	int len, temp_his, his_digits = 0;
 
 /*Determine number of digits in hist and store in hist_digits*/
 
-	temp_hist = hist;
-	while (temp_hist != 0)
+	temp_hist = his;
+	while (temp_his != 0)
 	{
-		hist_digits++;
-		temp_hist /= 10;
+		his_digits++;
+		temp_his /= 10;
 	}
-	hist_str = malloc(sizeof(char) * (hist_digits + 1));
-	if (!hist_str)
+	his_str = malloc(sizeof(char) * (his_digits + 1));
+	if (!his_str)
 		return (NULL);
 
-	_itoa(hist, hist_str, 10);
+	_itoa(his, his_str, 10);
 
 	args--;
-	len = _strlen(name) + hist_digits + _strlen(args[0]) + 45;
+	len = _strlen(name) + his_digits + _strlen(args[0]) + 45;
 	err = malloc(sizeof(char) * (len + 1));
 	if (!err)
 	{
-		free(hist_str);
+		free(his_str);
 		return (NULL);
 	}
 	_strcpy(err, name);
 	_strcat(err, ": ");
-	_strcat(err, hist_str);
+	_strcat(err, his_str);
 	_strcat(err, ": ");
 	_strcat(err, args[0]);
 	_strcat(err, ": Unable to add/remove from environment\n");
@@ -60,7 +60,7 @@ char *err_1(char **args)
 	arg_len = _strlen(args[0]);
 	len = name_len + arg_len + 13;
 
-	error = malloc(sizeof(char) * (len + 1));
+	err = malloc(sizeof(char) * (len + 1));
 	if (!err)
 		return (NULL);
 
@@ -80,11 +80,11 @@ char *err2_exit(char **args);
  */
 char *err2_exit(char **args)
 {
-	char *err, *hist_str;
-	int len, hist = 0;
+	char *err, *his_str;
+	int len, his = 0;
 
-	hist_str = _itoa(hist);
-	if (!hist_str)
+	his_str = _itoa(his);
+	if (!his_str)
 	{
 		return (NULL);
 	}
@@ -92,18 +92,18 @@ char *err2_exit(char **args)
 	err = malloc(sizeof(char) * (len + 1));
 	if (!err)
 	{
-		free(hist_str);
+		free(his_str);
 		return (NULL);
 	}
 
 	_strcpy(err, name);
 	_strcat(err, ": ");
-	_strcat(err, hist_str);
+	_strcat(err, his_str);
 	_strcat(err, ": exit: Illegal number: ");
 	_strcat(err, args[0]);
 	_strcat(err, "\n");
 
-	free(hist_str);
+	free(his_str);
 	return (err);
 }
 
@@ -115,34 +115,34 @@ char *err2_cd(char **args);
  */
 char *err2_cd(char **args)
 {
-	char *err, *hist_str;
-	int len, hist = 0;
+	char *err, *his_str;
+	int len, his = 0;
 
-	hist_str = _itoa(hist);
-	if (!hist_str)
+	his_str = _itoa(hist);
+	if (!his_str)
 	{
 		return (NULL);
 	}
 
 	if (args[0][0] == '-')
 		args[0][2] = '\0';
-	len = _strlen(name) + _strlen(hist_str) + _strlen(args[0]) + 24;
-	error = malloc(sizeof(char) * (len + 1));
+	len = _strlen(name) + _strlen(his_str) + _strlen(args[0]) + 24;
+	err = malloc(sizeof(char) * (len + 1));
 	if (!err)
 	{
-		free(hist_str);
+		free(his_str);
 		return (NULL);
 	}
 
-	_strcpy(error, name);
-	_strcat(error, ": ");
-	_strcat(error, hist_str);
+	_strcpy(err, name);
+	_strcat(err, ": ");
+	_strcat(err, his_str);
 	if (args[0][0] == '-')
-		_strcat(error, ": cd: Illegal option ");
+		_strcat(err, ": cd: Illegal option ");
 	else
-		_strcat(error, ": cd: can't cd to ");
-	_strcat(error, args[0]);
-	_strcat(error, "\n");
+		_strcat(err, ": cd: can't cd to ");
+	_strcat(err, args[0]);
+	_strcat(err, "\n");
 
 	free(hist_str);
 	return (err);
