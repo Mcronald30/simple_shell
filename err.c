@@ -35,6 +35,7 @@ int num_len(int num)
  */
 char *_itoa(int num)
 {
+	int i;
 	int len = num_len(num);
 	char *str = malloc((len + 1) * sizeof(char));
 
@@ -45,7 +46,7 @@ char *_itoa(int num)
 	}
 
 	str[len] = '\0';
-	for (int i = len - 1; i >= 0; i--)
+	for (i = len - 1; i >= 0; i--)
 	{
 		str[i] = (num % 10) + '0';
 		num /= 10;
@@ -63,13 +64,14 @@ char *_itoa(int num)
 int create_error(char **args, int err)
 {
 	int argc = 0;
+	int i;
 
 	if (args[argc] != NULL)
 	{
 	argc++;
 	}
 	printf("Error %d: ", err);
-	for (int i = 0; i < argc; i++)
+	for (i = 0; i < argc; i++)
 	{
 		printf("%s", args[i]);
 		if (i < argc - 1)
