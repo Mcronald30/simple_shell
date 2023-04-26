@@ -16,6 +16,8 @@
 #define END_OF_FILE -2
 #define EXIT -3
 
+extern char **environ;
+
 /**
  * struct list_s - A new struct type defining a linked list.
  * @dir: A directory path.

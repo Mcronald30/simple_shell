@@ -1,4 +1,9 @@
 #include "shell.h"
+#include <unistd.h>
+
+char **_copyenv(void);
+void free_env(void);
+char **_getenv(const char *var);
 
 /**
  * _copyenv - Creates a copy of the environment.
@@ -8,32 +13,32 @@
  */
 char **_copyenv(void)
 {
-	char **env_copy;
+	char **new_env;
 	size_t size;
 	int index;
 
-	for (size = 0; env[size]; size++)
+	for (size = 0; environ[size]; size++)
 
-	env_copy = malloc(sizeof(char *) * (size + 1));
-	if (!env_copy)
+	new_env = malloc(sizeof(char *) * (size + 1));
+	if (!new_env)
 		return (NULL);
 
-	for (index = 0; env[index]; index++)
+	for (index = 0; environ[index]; index++)
 	{
-		env_copy[index] = malloc(_strlen(env[index]) + 1);
+		new_env[index] = malloc(_strlen(environ[index]) + 1);
 
-		if (!env_copy[index])
+		if (!new_env[index])
 		{
 			for (index--; index >= 0; index--)
-				free(env_copy[index]);
-			free(env_copy);
+				free(new_env[index]);
+			free(new_env);
 			return (NULL);
 		}
-		_strcpy(env_copy[index], env[index]);
+		_strcpy(new_env[index], environ[index]);
 	}
-	env_copy[index] = NULL;
+	new_env[index] = NULL;
 
-	return (env_copy);
+	return (new_env);
 }
 
 /**
@@ -41,11 +46,14 @@ char **_copyenv(void)
  */
 void free_env(void)
 {
+	char **env = NULL;
 	int index;
 
+	env = environ;
+
 	for (index = 0; env[index]; index++)
-		free(env[index]);
-	free(env);
+		free(environ[index]);
+	free(environ);
 }
 
 /**
@@ -53,17 +61,19 @@ void free_env(void)
  * @var: The name of the environmental variable to get.
  *
  * Return: If the environmental variable does not exist - NULL.
- *         Otherwise - a pointer to the environmental variable.
  */
 char **_getenv(const char *var)
 {
+	char **env = NULL;
 	int index, len;
+
+	env = environ;
 
 	len = _strlen(var);
 	for (index = 0; env[index]; index++)
 	{
-		if (_strncmp(var, env[index], len) == 0)
-			return (&env[index]);
+		if (_strncmp(var, environ[index], len) == 0)
+			return (&environ[index]);
 	}
 
 	return (NULL);
