@@ -53,14 +53,15 @@ char **_strtok(char *line, char *delim)
 {
 	int count = count_tokens(line, delim);
 	char **tokens = malloc((count + 1) * sizeof(char *));
+	char *token;
+	int i = 0;
 
 	if (tokens == NULL)
 	{
 		return (NULL);
 	}
 
-	char *token = strtok(line, delim);
-	int i = 0;
+	token = strtok(line, delim);
 
 	while (token != NULL)
 	{
