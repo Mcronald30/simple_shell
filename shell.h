@@ -16,13 +16,6 @@
 #define END_OF_FILE -2
 #define EXIT -3
 
-/* Global environemnt */
-extern char **env;
-/* Global program name */
-char *name;
-/* Global history counter */
-int his;
-
 /**
  * struct list_s - A new struct type defining a linked list.
  * @dir: A directory path.
@@ -38,8 +31,6 @@ typedef struct list_s
  * struct builtin_s - A new struct type defining builtin commands.
  * @naam: a pointer to a character string.
  * @p: a pointer to a function that takes two arguments.
- * @prow: a pointer to a pointer to a character string. 
- * @argv: a pointer to an array of character pointers.
  */
 typedef struct builtin_s
 {
