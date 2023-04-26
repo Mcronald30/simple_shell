@@ -1,10 +1,13 @@
 #include "shell.h"
 
+int shell_alias(char **args, char **prow);
+void set_alias(char *var_name, char *value);
+void print_alias(alias_t *alias);
+
 /**
  * shell_alias - prints all aliases, desired aliases.
  * @args: An array of arguments.
  * @prow: A double pointer to the beginning of args.
- *
  * Return: If an error occurs - -1.
  *         Otherwise - 0.
  */
@@ -33,8 +36,8 @@ int shell_alias(char **args, char **prow)
 			{
 				if (_strcmp(args[i], dir->name) == 0)
 				{
-					print_alias(dir);
-					break;
+				shell_alias(dir);
+				break;
 				}
 				dir = dir->next;
 			}
@@ -85,24 +88,24 @@ void set_alias(char *var_name, char *value)
 }
 
 /**
- * print_alias - Prints the alias in the format name='value'.
+ * print_alias - Prints the alias character.
  * @alias: Pointer to an alias.
  */
 void print_alias(alias_t *alias)
 {
-	char *alias_string;
+	char *alias_str;
 	int len = _strlen(alias->name) + _strlen(alias->value) + 4;
 
-	alias_string = malloc(sizeof(char) * (len + 1));
-	if (!alias_string)
+	alias_str = malloc(sizeof(char) * (len + 1));
+	if (!alias_str)
 		return (NULL);
-	_strcpy(alias_string, alias->name);
-	_strcat(alias_string, "='");
-	_strcat(alias_string, alias->value);
-	_strcat(alias_string, "'\n");
+	_strcpy(alias_str, alias->name);
+	_strcat(alias_str, "='");
+	_strcat(alias_str, alias->value);
+	_strcat(alias_str, "'\n");
 
-	write(STDOUT_FILENO, alias_string, len);
-	free(alias_string);
+	write(STDOUT_FILENO, alias_str, len);
+	free(alias_str);
 }
 /**
  * replace_aliases - Goes through the arguments and replace any matching alias
