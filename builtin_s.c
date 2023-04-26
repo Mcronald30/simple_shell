@@ -80,7 +80,7 @@ int shell_cd(char **args, char **prow)
 	char cwd[PATH_MAX];
 
 	if (getcwd(cwd, sizeof(cwd)) == NULL)
-		return (create_error(args, -1));
+		return (create_err(args, -1));
 
 	char *pwd[3] = { "OLDPWD", _getenv("PWD"), NULL };
 

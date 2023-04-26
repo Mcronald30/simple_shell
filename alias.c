@@ -39,7 +39,7 @@ int shell_alias(char **args, char **prow)
 				dir = dir->next;
 			}
 			if (!dir)
-				len = create_error(args + i, 1);
+				len = create_err(args + i, 1);
 		}
 		else
 			set_alias(args[i], value);
