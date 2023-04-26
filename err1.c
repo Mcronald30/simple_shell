@@ -12,6 +12,8 @@ char *err_env(char **args)
 	char *err, *his_str;
 	int len, temp_his, his_digits = 0;
 
+	his = 0;
+
 /*Determine number of digits in hist and store in his_digits*/
 
 	temp_his = his;
@@ -116,7 +118,7 @@ char *err2_cd(char **args);
 char *err2_cd(char **args)
 {
 	char *err, *his_str;
-	int len, his = 0;
+	int len;
 
 	his_str = _itoa(hist);
 	if (!his_str)

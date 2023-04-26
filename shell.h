@@ -17,6 +17,7 @@
 #define EXIT -3
 
 extern char **environ;
+extern char **env;
 
 /**
  * struct list_s - A new struct type defining a linked list.
@@ -89,14 +90,14 @@ int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* Builtins */
-int my_builtin(char **args, char **prow);
-int exit_shell(char **args, char **prow);
-int env_shell(char **args, char **prow);
-int set_env(char **args, char **prow);
-int unset_env(char **args, char  **prow);
-int shell_cd(char **args, char **prow);
-int shell_alias(char **args, char **prow);
-int shell_help(char **args, char **prow);
+int my_builtin(char **args);
+int exit_shell(char **args);
+int env_shell(char **args);
+int set_env(char **args);
+int unset_env(char **args);
+int shell_cd(char **args);
+int shell_alias(char **args);
+int shell_help(char **args);
 void set_alias(char *var_name, char *value);
 void print_alias(alias_t *alias);
 
