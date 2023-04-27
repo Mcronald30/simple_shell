@@ -67,6 +67,32 @@ typedef struct alias_s
 /* Global aliases linked list */
 alias_t *aliases;
 
+/**
+ * struct configurations - configuration of build settings
+ * @env: linked list of local env variables
+ * @_getenv: array of env variables to put into execve
+ * @args: array of argument strings
+ * @strdup: string duplicate of user input
+ * @path: array of $PATH locations
+ * @list_path: string of path with correct prepended $PATH
+ * @free_loop: function for free double pointer array of pointers.
+ * @free_list: frees a listint_t list
+ * @lineCounter: counter of lines users have entered
+ * @errorStatus: error status of last child process
+ */
+typedef struct configurations
+{
+	char **_getenv;
+	char **args;
+	char *strdup;
+	char *path;
+	char *list_path;
+	char *free_loop;
+	char *free_list;
+	unsigned int lineCounter;
+	int errorStatus;
+} config;
+
 /* Main Helpers */
 void *_realloc(void *ptr, size_t old_size, size_t new_size);
 char **_strtok(char *line, char *delim);
