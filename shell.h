@@ -95,7 +95,7 @@ void print_num(int count);
 
 /*useful functions*/
 int _strlen(char *s);
-void add_node_end(list_p **head, const char *str);
+void add_node_end(list_t **head, const char *str);
 char *_strcat(char *s1, char *s2);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
