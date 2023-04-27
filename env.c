@@ -1,5 +1,8 @@
 #include "shell.h"
 #include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 char **_copyenv(void);
 void free_env(void);

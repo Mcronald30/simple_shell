@@ -20,6 +20,15 @@ extern char **environ;
 extern char **env;
 
 /**
+ * struct info_s - A new struct type defining a linked list.
+ * @readfd: A pointer to another struct list_s.
+ */
+typedef struct info_s
+{
+	int readfd;
+} info_t;
+
+/**
  * struct list_s - A new struct type defining a linked list.
  * @dir: A directory path.
  * @next: A pointer to another struct list_s.
