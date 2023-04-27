@@ -1,12 +1,13 @@
 #include "shell.h"
 #include <ctype.h>
 #include <string.h>
+#include <stdlib.h>
 
 /**
  * num_pos - Checks if a string is positive
-* @str: string to check
-* Return: 0 on success and -1 if is negative or is not a number
-*/
+ * @str: string to check
+ * Return: 0 on success and -1 if is negative or is not a number
+ */
 int num_pos(char *str)
 {
 	int n = 0;
@@ -20,13 +21,14 @@ int num_pos(char *str)
 	}
 	return (0);
 }
+
 /**
-* built_exit - Implements builtin exit
-* @buf: Buffer
-* @commands: Arguments
-* @ext_stat: Exit status
-* @count: count of lines
-*/
+ * built_exit - Implements builtin exit
+ * @buf: Buffer
+ * @commands: Arguments
+ * @ext_stat: Exit status
+ * @count: count of lines
+ */
 void built_exit(char *buf, char **commands, int *ext_stat, int count)
 {
 	int num = 0;
@@ -55,12 +57,13 @@ void built_exit(char *buf, char **commands, int *ext_stat, int count)
 	free(buf);
 	exit(*ext_stat);
 }
+
 /**
-*built_env - Built-in environment
-*@commands: Arguments
-*@env: the environment
-*@ext_stat: Exit status
-*/
+ * built_env - Built-in environment
+ * @commands: Arguments
+ * @env: the environment
+ * @ext_stat: Exit status
+ */
 void built_env(char **commands, char **env, int *ext_stat)
 {
 	char **aux = env;
