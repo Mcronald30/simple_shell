@@ -29,14 +29,14 @@ typedef struct info_s
 } info_t;
 
 /**
- * struct list_s - A new struct type defining a linked list.
+ * struct list_path - A new struct type defining a linked list.
  * @dir: A directory path.
  * @next: A pointer to another struct list_s.
  */
-typedef struct list_s
+typedef struct list_path
 {
 	char *dir;
-	struct list_s *next;
+	struct list_path *next;
 } list_t;
 
 /**
@@ -67,78 +67,39 @@ typedef struct alias_s
 alias_t *aliases;
 
 /* Main Helpers */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, size_t old_size, size_t new_size);
 char **_strtok(char *line, char *delim);
-char *get_location(char *command);
-list_t *get_path_dir(char *path);
-int execute(char **args, char **front);
-void free_list(list_t *head);
-char *_itoa(int num);
 char *my_getline(void);
+bool interactive(info_t *info);
+int is_delim(char c, const char *delim);
+int _isalpha(int c);
+int _atoi(char *s);
+int token_len(char *str, char *delim);
+int count_tokens(char *str, char *delim);
+char **_strtok(char *line, char *delim);
 
-/* Input Helpers */
-void handle_line(char **line, ssize_t read);
-void variable_replacement(char **args, int *exe_ret);
-char *get_args(char *line, int *exe_ret);
-int call_args(char **args, char **front, int *exe_ret);
-int run_args(char **args, char **front, int *exe_ret);
-int handle_args(int *exe_ret);
-int check_args(char **args);
-void free_args(char **args, char **front);
-char **replace_aliases(char **args);
+/*Functions of the shell*/
+void execute_line(char **argv, char **commands, int count,
+		char **env, int *exit_st, char *line);
+char **split_line(char *line);
+list_t *list_path(char **env);
+int _setenv(const char *name, const char *value, int overwrite);
+char *_which(char **commands, char **env);
+void shell_exit(char *line, char **arg, int *exit_st, int count);
+void shell_env(char **arg, char **env, int *exit_st);
+char *_getenv(const char *name, char **env);
+void _error(char **argv, char *first, int count, int **exit_st);
+int special_case(char *line, ssize_t line_len, int *exit_st);
+void print_num(int count);
 
-/* String functions */
-int _strlen(const char *s);
-char *_strcat(char *dest, const char *src);
-char *_strncat(char *dest, const char *src, size_t n);
-char *_strcpy(char *dest, const char *src);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
+/*useful functions*/
+int _strlen(char *s);
+void add_node_end(list_p **head, const char *str);
+char *_strcat(char *s1, char *s2);
+char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
-
-/* Builtins */
-int my_builtin(char **args);
-int exit_shell(char **args);
-int env_shell(char **args);
-int set_env(char **args);
-int unset_env(char **args);
-int shell_cd(char **args);
-int shell_alias(char **args);
-int shell_help(char **args);
-void set_alias(char *var_name, char *value);
-void print_alias(alias_t *alias);
-
-/* Builtin Helpers */
-char **_copyenv(void);
-void free_env(void);
-char **_getenv(const char *var);
-
-/* Error Handling */
-int create_err(char **args, int err);
-char *err_env(char **args);
-char *err_1(char **args);
-char *err2_exit(char **args);
-char *err2_cd(char **args);
-char *err2_syntax(char **args);
-char *err_126(char **args);
-char *err_127(char **args);
-
-/* Linkedlist Helpers */
-alias_t *add_alias_end(alias_t **head, char *name, char *value);
-void free_alias_list(alias_t *head);
-list_t *add_node_end(list_t **head, char *dir);
+void free_loop(char **arr);
 void free_list(list_t *head);
-
-void help_all(void);
-void help_alias(void);
-void help_cd(void);
-void help_exit(void);
-void help_help(void);
-void help_env(void);
-void help_setenv(void);
-void help_unsetenv(void);
-void help_history(void);
+char *_strncpy(char *dest, char *src, int n);
 
 #endif
