@@ -105,9 +105,9 @@ Running commands with arguments:
 .br
 	-rw-rw-r-- 1 vagrant vagrant   343 Apr 12 01:02 built_in.c
 .br
-	-rw-rw-r-- 1 vagrant vagrant   850 Apr 12 01:02 error.c
+	-rw-rw-r-- 1 vagrant vagrant   850 Apr 12 01:02 err.c
 .br
-	-rw-rw-r-- 1 vagrant vagrant   555 Apr 12 14:27 execute_line.c
+	-rw-rw-r-- 1 vagrant vagrant   555 Apr 12 14:27 execut.c
 .br
 	-rw-rw-r-- 1 vagrant vagrant   305 Apr 10 00:46 _getenv.c
 .br
@@ -123,9 +123,9 @@ The shell works like this in non-interactive mode:
 .br
 	built_in.c      _getenv.c    man_1_simple_shell  shell.c         split_line.c
 .br
-	error.c         hsh          mini_shell          shell.h         useful_func.c
+	err.c           hsh          atoi.c         shell.h         func_def.c
 .br
-	execut.c  list_path.c  README.md           special_case.c  path.c
+	execut.c  path_dir.c  README.md  strtok.c        special_case.c  path.c
 .br
 	$
 
