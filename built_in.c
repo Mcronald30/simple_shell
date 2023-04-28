@@ -23,13 +23,13 @@ int num_pos(char *str)
 }
 
 /**
- * built_exit - Implements builtin exit
+ * shell_exit - Implements builtin exit
  * @buf: Buffer
  * @commands: Arguments
  * @ext_stat: Exit status
  * @count: count of lines
  */
-void built_exit(char *buf, char **commands, int *ext_stat, int count)
+void shell_exit(char *buf, char **commands, int *ext_stat, int count)
 {
 	int num = 0;
 
@@ -59,12 +59,12 @@ void built_exit(char *buf, char **commands, int *ext_stat, int count)
 }
 
 /**
- * built_env - Built-in environment
+ * shell_env - Built-in environment
  * @commands: Arguments
  * @env: the environment
  * @ext_stat: Exit status
  */
-void built_env(char **commands, char **env, int *ext_stat)
+void shell_env(char **commands, char **env, int *ext_stat)
 {
 	char **aux = env;
 

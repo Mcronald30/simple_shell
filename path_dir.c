@@ -1,13 +1,14 @@
 #include "shell.h"
+
 /**
  * add_node_end - adds node to end of list
- * @head: head pointer
+ * @h: head pointer
  * @dir: string to new node
  * Return: new node, or NULL
  */
-void add_node_end(list_t **head, const char *dir)
+void add_node_end(list_t **h, const char *dir)
 {
-	list_t *last = *head;
+	list_t *last = *h;
 	list_t *new = malloc(sizeof(list_t));
 
 	new->next = NULL;
@@ -19,7 +20,7 @@ void add_node_end(list_t **head, const char *dir)
 		last->next = new;
 	}
 	else
-		*head = new;
+		*h = new;
 }
 /**
  *list_path - Linked list to PATH directories
@@ -30,16 +31,16 @@ list_t *list_path(char **env)
 {
 	char *dir;
 	char *path;
-	list_t *head;
+	list_t *h;
 
-	head = NULL;
+	h = NULL;
 	path = _getenv("PATH", env);
-	add_node_end(&head, ".");
+	add_node_end(&h, ".");
 	dir = strtok(path, ":");
 	while (dir != NULL)
 	{
-		add_node_end(&head, dir);
+		add_node_end(&h, dir);
 		dir = strtok(NULL, ":");
 	}
-	return (head);
+	return (h);
 }

@@ -78,8 +78,6 @@ alias_t *aliases;
  * @list_path: string of path with correct prepended $PATH
  * @free_loop: function for free double pointer array of pointers.
  * @free_list: frees a listint_t list
- * @lineCounter: counter of lines users have entered
- * @errorStatus: error status of last child process
  */
 typedef struct configurations
 {
@@ -90,8 +88,6 @@ typedef struct configurations
 	char *list_path;
 	char *free_loop;
 	char *free_list;
-	unsigned int lineCounter;
-	int errorStatus;
 } config;
 
 /* Main Helpers */
@@ -122,12 +118,12 @@ void print_num(int count);
 
 /*useful functions*/
 int _strlen(char *s);
-void add_node_end(list_t **head, const char *str);
+void add_node_end(list_t **h, const char *str);
 char *_strcat(char *s1, char *s2);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
 void free_loop(char **arr);
-void free_list(list_t *head);
+void free_list(list_t *h);
 char *_strncpy(char *dest, char *src, int n);
 
 #endif
