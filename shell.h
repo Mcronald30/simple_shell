@@ -16,6 +16,7 @@
 
 #define END_OF_FILE -2
 #define EXIT -3
+#define TOK_DELIM " \t\r\n\v\a"
 
 extern char **environ;
 extern char **env;
