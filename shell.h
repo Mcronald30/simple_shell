@@ -24,10 +24,14 @@ extern char **env;
 /**
  * struct info_s - A new struct type defining a linked list.
  * @readfd: A pointer to another struct list_s.
+ * @env_changed: on if environ was changed.
+ * @path: a string path for the current command.
  */
 typedef struct info_s
 {
 	int readfd;
+	int env_changed;
+	char *path;
 } info_t;
 
 /**
